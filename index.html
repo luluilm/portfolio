@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="icon" type="image/png" href="logo-decul.png">
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Load Typed.js -->
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -32,6 +34,17 @@
               light: '#000000',
               dark: '#f1f1f1',
             }
+          },
+          animation: {
+            'blob': 'blob 7s infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            }
           }
         }
       }
@@ -45,18 +58,55 @@
       .fade-in-section.is-visible {
         @apply opacity-100 translate-y-0;
       }
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #a0c4ff;
+        border-radius: 5px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #5a99e0;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #5a99e0;
+      }
     }
   </style>
 </head>
 
 <body
-  class="bg-bg-light text-text-light dark:bg-bg-dark dark:text-text-dark transition-colors duration-300 antialiased font-medium dark:font-light leading-relaxed">
+  class="bg-bg-light text-text-light dark:bg-bg-dark dark:text-text-dark transition-colors duration-300 antialiased font-medium dark:font-light leading-relaxed relative overflow-x-hidden selection:bg-primary selection:text-white">
+
+  <!-- Animated Background Blobs -->
+  <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+    <div
+      class="absolute top-0 left-1/4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob dark:opacity-20 dark:bg-purple-900">
+    </div>
+    <div
+      class="absolute top-0 right-1/4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000 dark:opacity-20 dark:bg-yellow-900">
+    </div>
+    <div
+      class="absolute -bottom-8 left-1/3 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000 dark:opacity-20 dark:bg-pink-900">
+    </div>
+  </div>
 
   <header
-    class="fixed top-0 left-0 w-full z-50 bg-bg-light/80 dark:bg-bg-dark/80 backdrop-blur-md p-8 flex justify-between items-center shadow-sm dark:shadow-white/5 transition-transform duration-300"
+    class="fixed top-0 left-0 w-full z-50 bg-white/30 dark:bg-black/30 backdrop-blur-md border-b border-white/20 dark:border-white/10 p-8 flex justify-between items-center shadow-sm dark:shadow-white/5 transition-transform duration-300"
     id="main-header">
     <div class="logo text-2xl font-bold text-primary dark:text-primary-dark">
-      <strong>Decul</strong> | Information Technology Student
+      <strong>Decul</strong> | <span id="typed-output"></span>
     </div>
     <button
       class="toggle-mode cursor-pointer bg-transparent border-2 border-primary dark:border-primary-dark text-inherit px-4 py-2 rounded-lg font-bold transition-all duration-300 hover:bg-primary hover:text-bg-light dark:hover:bg-primary-dark dark:hover:text-bg-dark"
@@ -86,7 +136,7 @@
       <div class="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         <!-- Project Card -->
         <div
-          class="project-card bg-bg-light dark:bg-bg-dark border border-primary dark:border-primary-dark rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-secondary dark:hover:border-secondary group w-full">
+          class="project-card bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary group w-full">
           <a href="https://luluilm.github.io/Bank-Kalteng/" target="_blank"
             class="block h-full flex flex-col no-underline">
             <img src="Screenshot of Bank Kalteng Website Product.jpg" alt="Screenshot of Bank Kalteng Website Product"
@@ -105,7 +155,7 @@
           </a>
         </div>
         <div
-          class="project-card bg-bg-light dark:bg-bg-dark border border-primary dark:border-primary-dark rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-secondary dark:hover:border-secondary group w-full">
+          class="project-card bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary group w-full">
           <a href="https://youtu.be/5AqrC20WBKc" target="_blank" class="block h-full flex flex-col no-underline">
             <img src="Screenshot of ComPro BSB.jpeg" alt="Screenshot of ComPro BSB"
               class="w-full h-48 object-cover block transition-transform duration-500 group-hover:scale-105">
@@ -124,8 +174,9 @@
           </a>
         </div>
         <div
-          class="project-card bg-bg-light dark:bg-bg-dark border border-primary dark:border-primary-dark rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-secondary dark:hover:border-secondary group w-full">
-          <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDk2MzMxMDAwMzYyOTcz?story_media_id=3819087786016338065&igsh=MWdqM2M5MTlsZnh6OQ==" target="_blank" class="block h-full flex flex-col no-underline">
+          class="project-card bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary group w-full">
+          <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDk2MzMxMDAwMzYyOTcz?story_media_id=3819087786016338065&igsh=MWdqM2M5MTlsZnh6OQ=="
+            target="_blank" class="block h-full flex flex-col no-underline">
             <img src="Screenshot of Instagram BSB.jpeg" alt="Screenshot of Instagram BSB"
               class="w-full h-48 object-cover block transition-transform duration-500 group-hover:scale-105">
             <div class="project-content p-6 text-left flex-grow flex flex-col">
@@ -151,52 +202,52 @@
         Skills</h2>
       <ul class="skills-list list-none p-0 flex flex-wrap gap-4 justify-start">
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Data Entry</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Video Editing</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Photo Editing</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Content Creation</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Content Planning</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Front-End Development</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Web Development</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Microsoft Office</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Canva (Intermediate Level)</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Capcut (Intermediate Level)</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Problem Solving</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Teamwork</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Leadership</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Public Speaking</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Communication</li>
         <li
-          class="bg-primary dark:bg-primary-dark text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-secondary dark:hover:bg-secondary cursor-default shadow-md">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Time Management</li>
       </ul>
     </section>
@@ -209,13 +260,13 @@
       <h2 class="text-3xl font-bold mb-6 text-primary dark:text-primary-dark text-left">Contact</h2>
       <div class="contact-info flex flex-col gap-3 text-left">
         <a href="https://wa.me/6282250806060"
-          class="text-primary dark:text-primary-dark no-underline flex items-center transition-all duration-300 hover:text-secondary hover:translate-x-2"><i
+          class="text-primary dark:text-primary-dark no-underline flex items-center transition-all duration-300 hover:text-primary hover:translate-x-2"><i
             class="fas fa-phone mr-3 text-xl"></i> +62 822-5080-6060</a>
         <a href="https://mail.google.com/mail/u/0/#inbox?compose=new"
-          class="text-primary dark:text-primary-dark no-underline flex items-center transition-all duration-300 hover:text-secondary hover:translate-x-2"><i
+          class="text-primary dark:text-primary-dark no-underline flex items-center transition-all duration-300 hover:text-primary hover:translate-x-2"><i
             class="fas fa-envelope mr-3 text-xl"></i> helloluluilm@gmail.com</a>
         <a href="https://www.linkedin.com/in/luluilm" target="_blank"
-          class="text-primary dark:text-primary-dark no-underline flex items-center transition-all duration-300 hover:text-secondary hover:translate-x-2"><i
+          class="text-primary dark:text-primary-dark no-underline flex items-center transition-all duration-300 hover:text-primary hover:translate-x-2"><i
             class="fab fa-linkedin mr-3 text-xl"></i> LinkedIn Profile</a>
       </div>
       <div

@@ -32,6 +32,7 @@ window.onload = function () {
 
   // Initialize Intersection Observer for scroll animations
   setupScrollObserver();
+
 };
 
 function setupScrollObserver() {
@@ -83,89 +84,13 @@ function setupFooterObserver() {
 }
 
 /* ===========================
-   Tic Tac Toe Game Logic
+   Typed.js Initialization
    =========================== */
-let currentPlayer = 'X';
-let gameActive = true;
-let gameState = ["", "", "", "", "", "", "", "", ""];
+var typed = new Typed('#typed-output', {
+  strings: ['Information Technology Student', 'Content Creator', 'Front-End Developer', 'Social Media Specialist'],
+  typeSpeed: 50,
+  backSpeed: 30,
+  backDelay: 2000,
+  loop: true
+});
 
-const winningConditions = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8],
-  [0, 3, 6], [1, 4, 7], [2, 5, 8],
-  [0, 4, 8], [2, 4, 6]
-];
-
-const statusDisplay = document.querySelector('#status');
-const cells = document.querySelectorAll('.cell');
-const resetBtn = document.querySelector('#reset-btn');
-
-function handleCellClick(clickedCellEvent) {
-  const clickedCell = clickedCellEvent.target;
-  const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
-
-  if (gameState[clickedCellIndex] !== "" || !gameActive) {
-    return;
-  }
-
-  handleCellPlayed(clickedCell, clickedCellIndex);
-  handleResultValidation();
-}
-
-function handleCellPlayed(clickedCell, clickedCellIndex) {
-  gameState[clickedCellIndex] = currentPlayer;
-  clickedCell.textContent = currentPlayer;
-  clickedCell.style.color = currentPlayer === 'X' ? 'var(--primary)' : 'var(--secondary)'; // Optional dynamic coloring
-}
-
-function handleResultValidation() {
-  let roundWon = false;
-  for (let i = 0; i < winningConditions.length; i++) {
-    const winCondition = winningConditions[i];
-    let a = gameState[winCondition[0]];
-    let b = gameState[winCondition[1]];
-    let c = gameState[winCondition[2]];
-
-    if (a === '' || b === '' || c === '') {
-      continue;
-    }
-    if (a === b && b === c) {
-      roundWon = true;
-      break;
-    }
-  }
-
-  if (roundWon) {
-    statusDisplay.textContent = `Player ${currentPlayer} Wins! 🎉`;
-    gameActive = false;
-    return;
-  }
-
-  let roundDraw = !gameState.includes("");
-  if (roundDraw) {
-    statusDisplay.textContent = "It's a Draw! 🤝";
-    gameActive = false;
-    return;
-  }
-
-  handlePlayerChange();
-}
-
-function handlePlayerChange() {
-  currentPlayer = currentPlayer === "X" ? "O" : "X";
-  statusDisplay.textContent = `Player ${currentPlayer}'s Turn`;
-}
-
-function handleRestartGame() {
-  gameActive = true;
-  currentPlayer = "X";
-  gameState = ["", "", "", "", "", "", "", "", ""];
-  statusDisplay.textContent = `Player X's Turn`;
-  cells.forEach(cell => {
-    cell.textContent = "";
-  });
-}
-
-if (cells.length > 0) {
-  cells.forEach(cell => cell.addEventListener('click', handleCellClick));
-  resetBtn.addEventListener('click', handleRestartGame);
-}

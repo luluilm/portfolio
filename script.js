@@ -10,11 +10,11 @@ function updaterToggleButtonText() {
   const isDark = document.documentElement.classList.contains('dark');
 
   if (isDark) {
-    toggleBtn.textContent = 'Light Mode';
+    toggleBtn.innerHTML = '<i class="fas fa-sun md:hidden"></i><span class="hidden md:inline">Light Mode</span>';
     // Optional: Save preference to localStorage
     localStorage.setItem('theme', 'dark');
   } else {
-    toggleBtn.textContent = 'Dark Mode';
+    toggleBtn.innerHTML = '<i class="fas fa-moon md:hidden"></i><span class="hidden md:inline">Dark Mode</span>';
     localStorage.setItem('theme', 'light');
   }
 }

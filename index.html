@@ -103,21 +103,24 @@
   </div>
 
   <header
-    class="fixed top-0 left-0 w-full z-50 bg-white/30 dark:bg-black/30 backdrop-blur-md border-b border-white/20 dark:border-white/10 p-8 flex justify-between items-center shadow-sm dark:shadow-white/5 transition-transform duration-300"
+    class="fixed top-0 left-0 w-full z-50 bg-white/30 dark:bg-black/30 backdrop-blur-md border-b border-white/20 dark:border-white/10 p-4 md:p-8 flex justify-between items-center shadow-sm dark:shadow-white/5 transition-transform duration-300"
     id="main-header">
-    <div class="logo text-2xl font-bold text-primary dark:text-primary-dark">
-      <strong>Decul</strong> | <span id="typed-output"></span>
+    <div
+      class="logo text-xl md:text-2xl font-bold text-primary dark:text-primary-dark flex flex-col sm:block items-start sm:items-center">
+      <span><strong>Decul</strong> <span class="hidden sm:inline">|</span></span> <span id="typed-output"
+        class="text-sm sm:text-2xl"></span>
     </div>
     <button
-      class="toggle-mode cursor-pointer bg-transparent border-2 border-primary dark:border-primary-dark text-inherit px-4 py-2 rounded-lg font-bold transition-all duration-300 hover:bg-primary hover:text-bg-light dark:hover:bg-primary-dark dark:hover:text-bg-dark"
+      class="toggle-mode cursor-pointer bg-transparent border-2 border-primary dark:border-primary-dark text-inherit px-3 py-2 md:px-4 md:py-2 rounded-lg font-bold transition-all duration-300 hover:bg-primary hover:text-bg-light dark:hover:bg-primary-dark dark:hover:text-bg-dark flex items-center justify-center min-w-[44px] min-h-[44px]"
       onclick="toggleMode()">
-      Toggle Mode
+      <i class="fas fa-adjust md:hidden"></i><span class="hidden md:inline">Toggle Mode</span>
     </button>
   </header>
 
-  <main class="pt-32 p-8 max-w-4xl mx-auto text-justify">
+  <main class="pt-24 md:pt-32 p-4 md:p-8 max-w-4xl mx-auto text-justify">
     <section class="hero-section mb-12 fade-in-section">
-      <h1 class="text-5xl md:text-6xl font-bold mb-4 text-primary dark:text-primary-dark text-left">Hi, I'm Decul 👋
+      <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 text-primary dark:text-primary-dark text-left">Hi, I'm
+        Decul 👋
       </h1>
       <p class="text-lg mb-8 text-justify">I am an Information Technology student with interests in administration,
         communication, design, and digital content.
@@ -131,7 +134,7 @@
 
     <section class="mb-12 fade-in-section">
       <h2
-        class="text-3xl font-bold mt-12 mb-6 border-b-2 border-primary dark:border-primary-dark pb-2 text-primary dark:text-primary-dark text-left">
+        class="text-2xl md:text-3xl font-bold mt-12 mb-6 border-b-2 border-primary dark:border-primary-dark pb-2 text-primary dark:text-primary-dark text-left">
         Projects</h2>
       <div class="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         <!-- Project Card -->
@@ -198,56 +201,83 @@
 
     <section class="mb-12 fade-in-section">
       <h2
-        class="text-3xl font-bold mt-12 mb-6 border-b-2 border-primary dark:border-primary-dark pb-2 text-primary dark:text-primary-dark text-left">
+        class="text-2xl md:text-3xl font-bold mt-12 mb-6 border-b-2 border-primary dark:border-primary-dark pb-2 text-primary dark:text-primary-dark text-left">
+        Prototype</h2>
+      <div class="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        <!-- Project Card -->
+        <div
+          class="project-card bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-xl overflow-hidden shadow-lg dark:shadow-white/5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary group w-full">
+          <a href="https://luluilm.github.io/demo-casamia/" target="_blank"
+            class="block h-full flex flex-col no-underline">
+            <img src="Screenshot Demo Casamia.jpeg" alt="Screenshot of Demo Casamia"
+              class="w-full h-48 object-cover block transition-transform duration-500 group-hover:scale-105">
+            <div class="project-content p-6 text-left flex-grow flex flex-col">
+              <h3
+                class="text-2xl font-bold mb-2 text-text-light dark:text-text-dark group-hover:text-primary dark:group-hover:text-primary-dark transition-colors">
+                Demo Casamia</h3>
+              <p class="text-sm text-text-light dark:text-text-dark text-justify flex-grow">A landing page prototype
+                created for demonstration purposes only.</p>
+              <span
+                class="mt-4 text-primary dark:text-primary-dark font-semibold group-hover:translate-x-2 transition-transform inline-block">View
+                Project &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12 fade-in-section">
+      <h2
+        class="text-2xl md:text-3xl font-bold mt-12 mb-6 border-b-2 border-primary dark:border-primary-dark pb-2 text-primary dark:text-primary-dark text-left">
         Skills</h2>
       <ul class="skills-list list-none p-0 flex flex-wrap gap-4 justify-start">
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Data Entry</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Video Editing</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Photo Editing</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Content Creation</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Content Planning</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Front-End Development</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Web Development</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Microsoft Office</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Canva (Intermediate Level)</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Capcut (Intermediate Level)</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Problem Solving</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Teamwork</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Leadership</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Public Speaking</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Communication</li>
         <li
-          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 text-bg-light dark:text-bg-dark px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
+          class="bg-white/40 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-white/10 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 hover:scale-110 hover:bg-primary dark:hover:bg-primary cursor-default shadow-md text-text-light dark:text-text-dark">
           Time Management</li>
       </ul>
     </section>
@@ -257,7 +287,7 @@
   <footer
     class="p-8 mt-12 bg-gray-50 dark:bg-[#151516] border-t border-gray-200 dark:border-white/10 transition-colors duration-300 fade-in-section">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6 text-primary dark:text-primary-dark text-left">Contact</h2>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-primary dark:text-primary-dark text-left">Contact</h2>
       <div class="contact-info flex flex-col gap-3 text-left">
         <a href="https://wa.me/6282250806060"
           class="text-primary dark:text-primary-dark no-underline flex items-center transition-all duration-300 hover:text-primary hover:translate-x-2"><i
